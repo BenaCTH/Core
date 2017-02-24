@@ -1,0 +1,26 @@
+var mathUtil={};
+mathUtil = {
+        /**
+		 * 获取滚动条中的元素，滚动的距离
+		 * @method getViewPosition
+		 * @param {jQuery} element 需要计算滚动距离的元素对应的jQuery对象
+		 * @param {jQuery} scroll 开启滚动条的div对应的jQuery对象
+		 */
+        getViewPosition: function (element, scroll) {
+            var et_offset = element.offset(), sl_offset = scroll.offset(), returnValue = {};
+
+            returnValue.left = et_offset.left - sl_offset.left + scroll.scrollLeft();
+            returnValue.top = et_offset.top - sl_offset.top + scroll.scrollTop();
+
+            return returnValue;
+        },
+        /**
+		 * 去掉像素值最后的px
+		 * @method removePx
+		 * @param {String} 需要转换的值
+		 * @return {Number}
+		 */
+        removePx: function (value) {
+            return isNaN(parseInt(value)) ? 0 : parseInt(value);
+        }
+    };
