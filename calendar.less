@@ -1,0 +1,424 @@
+.aui-calendar {
+    background-color: var(--white);
+    color: var(--body-color);
+    font-size: var(--font-n);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: var(--radius-s);
+    box-shadow: var(--shadow-size-s) var(--shadow-color);
+    width: 258px;
+    height: 362px;
+
+    .aui-calendar-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+
+        .aui-calendar-past-item {
+            color: var(--gray-6);
+        }
+    }
+
+    .aui-calendar-header {
+        position: relative;
+        height: 72px;
+        cursor: pointer;
+        padding: 24px 16px;
+        background: var(--modal-header-bg);
+        color: var(--modal-header-color);
+        font-weight: var(--semibold);
+        font-size: 1.15em;
+    }
+
+    .aui-calendar-title {
+        height: 100%;
+        margin-left: 26px;
+        margin-right: 26px;
+        text-align: center;
+
+        &:hover {
+            //color: var(--theme-1);
+        }
+    }
+
+    .aui-calendar-left {
+        position: absolute;
+        left: 0px;
+        width: 26px;
+        height: 16px;
+        font-weight: var(--semibold);
+        font-size: 1.15em;
+        top: 0;
+        bottom: 0;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        &::before {
+            color: var(--modal-header-color);
+        }
+    }
+
+    .aui-calendar-right {
+        position: absolute;
+        width: 26px;
+        height: 16px;
+        font-weight: var(--semibold);
+        font-size: 1.15em;
+        top: 0;
+        bottom: 0;
+        right: 0px;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        &::before {
+            color: var(--modal-header-color);
+        }
+    }
+
+    .aui-calendar-today {
+        background-color: transparent;
+        border: 0 none transparent;
+        color: var(--selected-bg);
+        cursor: pointer;
+        margin-right: 16px;
+        padding: 0;
+        font-size: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .aui-calendar-month-view {
+        flex: 1 0 auto;
+        overflow: hidden;
+
+        & .aui-calendar-month-header {
+            padding: 5px 8px;
+            background-color: var(--mark-bg);
+            color: var(--mark-color);
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .aui-calendar-month-table {
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 4px;
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+
+            .aui-calendar-month-header-item {
+                text-align: center;
+                height: 16px;
+                font-weight: var(--semibold);
+            }
+
+            .aui-calendar-month-item {
+                position: relative;
+                background-color: var(--white);
+                text-align: center;
+                line-height: normal;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                }
+
+                & > div {
+                    position: relative;
+                }
+
+                &:hover {
+                    &::before {
+                        background-color: var(--gray-2);
+                    }
+
+                    color: var(--body-color);
+                }
+            }
+
+            .aui-calendar-month-feature-item {
+                color: var(--gray-6);
+            }
+
+            .aui-calendar-month-selected-item {
+                position: relative;
+                color: var(--white);
+
+                &::before {
+                    background-color: var(--selected-bg);
+                }
+
+                &:hover {
+                    color: var(--white);
+
+                    &::before {
+                        background-color: var(--hover-bg);
+                    }
+                }
+            }
+
+            .aui-calendar-selected-range-item {
+                background-color: var(--theme-2);
+                color: var(--body-color);
+
+                &::before {
+                    background-color: var(--theme-2);
+                }
+            }
+
+            .aui-calendar-selected-range-item + .aui-calendar-selected-range-item {
+                box-shadow: 4px 0px var(--theme-2), -4px 0px var(--theme-2);
+            }
+
+            .aui-calendar-selected-range-item:last-child {
+                box-shadow: -4px 0px var(--theme-2);
+            }
+
+            .aui-calendar-selected-start-item {
+                border-radius: unset;
+
+                &.aui-calendar-shadow {
+                    box-shadow: -15px 0px var(--theme-2) inset, 4px 0 var(--theme-2);
+                }
+
+                &:last-child {
+                    &.aui-calendar-shadow {
+                        box-shadow: -15px 0px var(--theme-2) inset;
+                    }
+                }
+            }
+
+            .aui-calendar-selected-end-item {
+                border-radius: unset;
+
+                &.aui-calendar-shadow {
+                    box-shadow: 15px 0px var(--theme-2) inset, -4px 0 var(--theme-2);
+                }
+
+                &:first-child {
+                    &.aui-calendar-shadow {
+                        box-shadow: 15px 0px var(--theme-2) inset;
+                    }
+                }
+            }
+
+            .aui-calendar-month-item-circle {
+                height: 4px;
+                width: 4px;
+                -moz-border-radius: var(--radius-s);
+                -webkit-border-radius: var(--radius-s);
+                border-radius: var(--radius-s);
+                background: var(--alt-color);
+                margin: 0 auto;
+                display: none;
+            }
+
+            .aui-calendar-month-today-item {
+                &::after {
+                    position: absolute;
+                    content: '';
+                    display: block;
+                    border: var(--border-n) solid var(--selected-bg);
+                    top: -2px;
+                    left: -2px;
+                    right: -2px;
+                    bottom: -2px;
+                    height: 34px;
+                    width: 34px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+
+            .aui-calendar-item-disabled {
+                color: var(--disabled-color);
+                cursor: not-allowed;
+
+                &::before {
+                    background-color: var(--disabled-bg);
+                }
+
+                &:hover {
+                    color: var(--disabled-color);
+
+                    &::before {
+                        background-color: var(--disabled-bg);
+                    }
+                }
+            }
+        }
+
+        .aui-calendar-month-content {
+            margin: 0 8px;
+            height: 208px;
+            width: 244px;
+            outline: none;
+        }
+    }
+
+    .aui-calendar-year-view {
+        flex: 1 0 auto;
+        display: none;
+        margin: 10px 5px;
+        background-color: var(--white);
+
+        .aui-calendar-year-view-content {
+            table-layout: fixed;
+            width: 100%;
+            height: 100%;
+            border-spacing: 0 1px;
+            border: var(--border-n) solid var(--gray-5);
+        }
+
+        .aui-calendar-year-item {
+            text-align: center;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+            height: 90px;
+
+            & > div {
+                position: relative;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 0;
+                padding: 50% 0;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                -ms-transform: translateY(12.5%);
+            }
+
+            &:hover::before {
+                background-color: var(--gray-1);
+            }
+        }
+
+        .aui-calendar-item-disabled:hover {
+            background-color: var(--disabled-bg);
+        }
+
+        .aui-calendar-year-selected {
+            color: var(--mark-color);
+
+            &::before {
+                background-color: var(--selected-bg);
+            }
+
+            &:hover::before {
+                background-color: var(--hover-bg);
+            }
+        }
+    }
+
+    .aui-calendar-decade-view {
+        flex: 1 0 auto;
+        display: none;
+        margin: 10px 5px;
+        background-color: var(--white);
+
+        .aui-calendar-decade-view-content {
+            table-layout: fixed;
+            width: 100%;
+            height: 100%;
+            border-spacing: 0 1px;
+            border: var(--border-n) solid var(--gray-2);
+        }
+
+        .aui-calendar-decade-item {
+            text-align: center;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+            height: 90px;
+
+            & > div {
+                position: relative;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 0;
+                padding: 50% 0;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                border-radius: 50%;
+                transform: translateY(-50%);
+                -ms-transform: translateY(12.5%);
+            }
+
+            &:hover::before {
+                background-color: var(--gray-2);
+            }
+        }
+
+        .aui-calendar-year-selected {
+            color: var(--white);
+
+            &::before {
+                background-color: var(--selected-bg);
+            }
+
+            &:hover::before {
+                background-color: var(--hover-bg);
+            }
+        }
+
+        .aui-calendar-item-disabled:hover {
+            background-color: var(--disabled-bg);
+        }
+    }
+
+    .aui-calendar-not-validate-item {
+        color: var(--gray-2);
+    }
+
+    .aui-calendar-item-disabled {
+        color: var(--disabled-color);
+        cursor: not-allowed;
+
+        &::before {
+            background-color: var(--disabled-bg);
+        }
+
+        &:hover {
+            &::before {
+                background-color: var(--disabled-bg);
+            }
+        }
+    }
+}
